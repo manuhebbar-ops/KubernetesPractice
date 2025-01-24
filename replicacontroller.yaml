@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replicacontroller-pod
+spec:
+  replicas: 3
+  selector:
+    myname: manureplicacontroller
+
+  template:
+    metadata:
+      labels:
+        myname: manureplicacontroller      
+
+    spec:
+      containers:
+        - name: c00
+          image: ubuntu
+          command: ["/bin/bash","-c","while true; do echo hello-manu; sleep 5; done"]
+

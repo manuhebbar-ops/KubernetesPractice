@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicasetme-pod
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: myname
+        operator: In
+        values: [manureplicaset, userreplicaset, adminreplicaset]
+
+  template:
+    metadata:
+      labels:
+        myname: manureplicaset
+
+    spec:
+      containers:
+        - name: c00
+          image: ubuntu
+          command: ["/bin/bash","-c","while true; do echo hello-manu; sleep 5; done"]
+
+

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envcontainer
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo hello-manu; sleep 5; done"]
+      env:
+        - name: MYNAME
+          value: manu hebbar
+
